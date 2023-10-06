@@ -1,0 +1,63 @@
+#+title: Untexify-data
+
+This is the repository storing the initial data and scripts to generate datasets of \(\LaTeX\) images of varying formats and dimensions.
+
+* Dependencies
+:PROPERTIES:
+:ID:       c4aec7c3-7cdc-4ed6-b436-90bf13b0605c
+:END:
+  - ~tex2svg~[fn:1]
+  - ~pdf2svg~
+  - ~inkscape~ (>1.0)
+* Installation
+:PROPERTIES:
+:ID:       cb8bca1b-bafe-45ac-a939-8b107b482b5d
+:END:
+The easiest way to use this is with Nix (with flakes enabled). First, install ~tex2svg~ according to [[https://github.com/yannikschaelte/tex2svg#requirements][its instructions]]. Then, run ~nix develop~ in this directory. All other dependencies should be made available in the resulting shell.
+
+* Usage
+:PROPERTIES:
+:ID:       b274c54a-4d72-4170-83d9-916feb706118
+:END:
+  - ~convert.sh~ is the main executable
+    When run, it will convert all of the lines of fragments in ~equations.txt~ into 256x256 .pngs within the ~./out~ directory.
+
+    1. Use the current generation's ~bash~ (if not on NixOS, please )
+        #+begin_src bash :tangle convert.sh
+        #!/run/current-system/sw/bin/bash
+        #+end_src
+
+        #+begin_src bash :tangle convert.sh
+        while read line
+        do
+
+        #+end_src
+    - First, we convert the lines of tex to .svg files (so that scaling becomes as easy as changing a variable)
+        #+begin_src bash :tangle convert.sh
+        tex2svg $line ./out/$line.svg
+        #+end_src
+    - Then, we use inkscape to convert .svg -> .png. The ~-D~ flag crops the final image to the bounding box of the fragment.
+        #+begin_src bash :tangle convert.sh
+        inkscape -D -w 256 -h 256 ./out/$line.svg -o ./out/$line.png
+        #+end_src
+    - Removing the intermediate .svg.
+        #+begin_src bash :tangle convert.sh
+        rm ./out/$line.svg
+        #+end_src
+    - We take ~equations.txt~ in the current directory as input.
+        #+begin_src bash :tangle convert.sh
+        done < equations.txt
+        #+end_src
+
+  - ~equations.txt~ houses the \(\LaTeX\) fragments to be generated
+
+      Its format dictates that each fragment occupies one line. There needs to be inline (~$~) or block (~$$~) markers surrounding parts of fragments where it would be necessary in a normal ~.tex~ document.
+
+      You need to escape backslashes (replace ~\~ with ~\\~).
+
+* Footnotes
+:PROPERTIES:
+:ID:       f432638b-1d10-4dcd-905b-781518904046
+:END:
+
+[fn:1] https://github.com/yannikschaelte/tex2svg
