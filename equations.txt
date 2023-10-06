@@ -24,8 +24,8 @@ $$\\lll$$
 $$\\ggg$$
 $$\\subset$$
 $$\\supset$$
-$$\\not\subset$$
-$$\\not\supset$$
+$$\\not\\\subset$$
+$$\\not\\\supset$$
 $$\\subseteq$$
 $$\\supseteq$$
 $$\\nsubseteq$$
@@ -42,7 +42,7 @@ $$\\mathbb{H}$$
 $$\\mathbb{O}$$
 $$\\mathbb{S}$$
 $$\\in$$
-$$\\notin$$
+$$\\not\\in$$
 $$\\ni$$
 $$\\subset$$
 $$\\subseteq$$
