@@ -9,6 +9,8 @@
         system = "x86_64-linux";
       in {
         devShells.default = pkgs.mkShell {
+          #TODO: Package tex2svg (github:yannikschaelte/tex2svg) and declare it here
+          #BUG: 1d0f74df-8115-4a4c-998d-ae13caad50ef
           packages = [ pkgs.pdf2svg ];
           shellHook = "echo 'use flake .'> ./.envrc && direnv allow";
         };

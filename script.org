@@ -10,7 +10,7 @@ with open('output.svg', 'w') as f:
 #+end_src
 
 Another way is to use the =dvisvgm= command-line tool, which can be
-called from Python :Tangle Convert.Py using the =subprocess= module. Here's an example of
+called from Python using the =subprocess= module. Here's an example of
 how to use it:
 
 #+begin_src python :tangle convert.py

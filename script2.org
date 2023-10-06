@@ -1,0 +1,58 @@
+:PROPERTIES:
+:ID:       f1077be4-6066-4b63-8ee6-f088d81d9028
+:END:
+There are several ways to convert LaTeX symbols into SVG images using
+Python. One way is to use the =latex2svg= function from the =svgkit=
+library. This function takes a LaTeX string as input and returns an SVG
+formatted string. Here is an example of how to use it:
+
+#+begin_src python :tangle script2.py
+import urllib
+import urllib2
+
+def latex2svg(latexcode):
+    """
+    Turn LaTeX string to an SVG formatted string using the online SVGKit
+    found at: http://svgkit.sourceforge.net/tests/latex_tests.html
+    """
+    txdata = urllib.urlencode({"latex": latexcode})
+    url = "http://svgkit.sourceforge.net/cgi-bin/latex2svg.py"
+    req = urllib2.Request(url, txdata)
+    return urllib2.urlopen(req).read()
+
+# Example usage
+print(latex2svg("\\frac{1}{2\\pi}"))
+#+end_src
+
+Another way is to use the =tex2svg= package, which can be installed via
+pip. This package provides a simple program to convert LaTeX equations
+to SVGs. Here is an example of how to use it:
+
+#+begin_src python :tangle script2.py
+from subprocess import call
+
+# Example usage
+call(["echo", "x^2", "|", "tex2svg", ">", "x2.svg"])
+#+end_src
+
+Please note that these are just two examples of how to convert LaTeX
+symbols into SVG images using Python. There are many other libraries and
+packages available that can accomplish this task as well.
+
+Source: Conversation with Bing, 10/5/2023 (1) converting a latex code to
+mathml or svg code in python.
+https://stackoverflow.com/questions/9588261/converting-a-latex-code-to-mathml-or-svg-code-in-python.
+(2) GitHub - tuxu/latex2svg: Render LaTeX markup and equations to SVG.
+https://github.com/tuxu/latex2svg. (3) Convert latex to svg using python
+· GitHub. https://gist.github.com/8ba87989ad154beb4bdd96c6f96e94e7. (4)
+Converting latex code to Images (or other displayble format) with
+Python.
+https://stackoverflow.com/questions/1381741/converting-latex-code-to-images-or-other-displayble-format-with-python.
+(5) undefined. http://svgkit.sourceforge.net/SVGLaTeX.html. (6)
+undefined. http://svgkit.sourceforge.net/tests/latex_tests.html. (7)
+undefined. http://svgkit.sourceforge.net/cgi-bin/latex2svg.py. (8)
+tex2svg · PyPI. https://pypi.org/project/tex2svg/. (9) converting a
+latex code to mathml or svg code in python.
+https://www.appsloveworld.com/python/262/converting-a-latex-code-to-mathml-or-svg-code-in-python.
+(10) GitHub - bornimation/latex-to-svg: A python code to output latex
+.... https://github.com/bornimation/latex-to-svg.

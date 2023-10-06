@@ -1,12 +1,3 @@
-from tex2svg import latex2svg
-
-# Convert LaTeX code to SVG
-svg = latex2svg(r'\int_0^1 x^2 dx')
-
-# Save SVG to file
-with open('output.svg', 'w') as f:
-    f.write(svg)
-
 import subprocess
 
 # Convert LaTeX code to DVI
