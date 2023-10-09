@@ -185,7 +185,6 @@ $$\\varsubsetneqq$$
 $$\\varsupsetneqq$$
 $$\\emptyset$$
 $$\\varnothing$$
-$$\\mathbb$$
 $$\\exists$$
 $$\\nexists$$
 $$\\forall$$
