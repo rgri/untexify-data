@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/bin/bash
 while read line
 do
     tex2svg $line ./original_images/$line.svg
