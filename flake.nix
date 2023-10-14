@@ -16,7 +16,6 @@
             pkgs.glib
             # Only necessary for transform.py
             pkgs.zlib
-            pkgs.aws-crt-cpp
           ];
           #TODO: Package tex2svg (github:yannikschaelte/tex2svg) and declare it here
           #BUG: 1d0f74df-8115-4a4c-998d-ae13caad50ef
